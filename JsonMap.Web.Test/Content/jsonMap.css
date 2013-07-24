@@ -1,0 +1,132 @@
+﻿@import url(http://fonts.googleapis.com/css?family=Droid+Sans+Mono);
+/* line 3, ../Aidem/sass/layout/_jsonMap.scss */
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-size: 100%;
+  font-family: 'Droid Sans Mono', sans-serif;
+  background-color: black;
+}
+
+/* line 13, ../Aidem/sass/layout/_jsonMap.scss */
+.clear {
+  clear: both;
+}
+
+/* line 14, ../Aidem/sass/layout/_jsonMap.scss */
+.inner {
+  padding: 10px;
+}
+
+/* line 16, ../Aidem/sass/layout/_jsonMap.scss */
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* line 18, ../Aidem/sass/layout/_jsonMap.scss */
+select, button, .button, input[type="text"] {
+  font-family: 'Droid Sans Mono', sans-serif;
+}
+
+/* line 20, ../Aidem/sass/layout/_jsonMap.scss */
+.container {
+  width: 1140px;
+  margin: 25px auto;
+  background: #176f0c;
+}
+
+/* line 22, ../Aidem/sass/layout/_jsonMap.scss */
+button, .button {
+  cursor: pointer;
+  background-color: #646464;
+  color: white;
+  border: 0;
+  padding: 10px;
+}
+/* line 28, ../Aidem/sass/layout/_jsonMap.scss */
+button:hover, .button:hover {
+  background-color: #969696;
+}
+
+/* line 33, ../Aidem/sass/layout/_jsonMap.scss */
+.column {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-right: 20px;
+  color: white;
+  float: left;
+  width: 260px;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+/* line 41, ../Aidem/sass/layout/_jsonMap.scss */
+.column:first-child {
+  margin-left: 20px;
+}
+
+/* line 48, ../Aidem/sass/layout/_jsonMap.scss */
+.JsonMapGridItem .button-row .button {
+  float: left;
+  width: 65px;
+  margin-right: 10px;
+}
+/* line 54, ../Aidem/sass/layout/_jsonMap.scss */
+.JsonMapGridItem select {
+  width: 240px;
+  padding: 5px;
+}
+/* line 58, ../Aidem/sass/layout/_jsonMap.scss */
+.JsonMapGridItem input[type="text"] {
+  width: 226px;
+  padding: 5px;
+}
+
+/* line 64, ../Aidem/sass/layout/_jsonMap.scss */
+.json-map-save {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+}
+/* line 68, ../Aidem/sass/layout/_jsonMap.scss */
+.json-map-save button {
+  float: right;
+}
+
+/* line 73, ../Aidem/sass/layout/_jsonMap.scss */
+.button-row {
+  min-height: 40px;
+}
+
+/* line 76, ../Aidem/sass/layout/_jsonMap.scss */
+.success {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+/* line 79, ../Aidem/sass/layout/_jsonMap.scss */
+.alert {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* line 82, ../Aidem/sass/layout/_jsonMap.scss */
+.secondary {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+/* line 86, ../Aidem/sass/layout/_jsonMap.scss */
+.label {
+  display: inline-block;
+  width: 210px;
+}
+
+/* line 88, ../Aidem/sass/layout/_jsonMap.scss */
+.reveal-modal {
+  display: none;
+  background: rgba(255, 255, 255, 0.5);
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+}

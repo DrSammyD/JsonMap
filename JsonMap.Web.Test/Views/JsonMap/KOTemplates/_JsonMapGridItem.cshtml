@@ -1,0 +1,159 @@
+<!--
+ ###* 
+ * Copyright 2013 MacReport Media Publishing Inc.
+ * Licensed under MPL-2.0 (see /LICENSE)
+ * If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ * 
+ * Author: Sam Armstrong
+ ###
+ -->
+
+<script type="text/html" id="EntityJsonMapGridItem">
+    <div class="JsonMapGridItem alert-box primary callout" data-bind="css:{'secondary': $data.parentSelected, 'alert': $data.childSelected,'success': $data.selected, 'new': $data === $root.JsonMapsViewModel.nodeCreated()}, visible: $root.JsonMapsViewModel.EntitysDisplayList().indexOf($data)>-1">
+        <div class="button-row">
+            <div class="large-4 columns">
+                <div class="button tiny radius" data-bind="click: function(){$data.toggleSelected()}, visible: $root.JsonMapsViewModel.showSelect($data) ">select</div>
+            </div>
+            <div class="large-4 columns">
+                <div class="button tiny radius" data-bind="click: function(){ $root.JsonMapsViewModel.saveCreated($data) }, visible: $root.JsonMapsViewModel.nodeCreated() == $data">save</div>
+            </div>
+
+            <div class="large-4 columns">
+                <div class="button tiny radius" data-bind="click: function(){ $root.JsonMapsViewModel.removeViewModel($data,'Entitys') }, visible: $root.JsonMapsViewModel.nodeCreated() == $data">remove</div>
+                <div class="button tiny radius" data-bind="click: function(){ $root.JsonMapsViewModel.nodeDeleted($data)}, visible: $root.JsonMapsViewModel.nodeCreated() != $data">delete</div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <ul>
+            <li><span data-bind="text: $data.Id"></span></li>
+            <li><select data-bind="options: $root.FormViewModel.TypeListViewModel.TypeList(), optionsText: function(item){return _.last(item.split('.'))}, optionsValue: function(item){return item}, selectValue: $data.Name" /></li>
+            <li>
+                <select class="JsonMapTypeEnum" data-bind="options: $root.FormViewModel.JsonMapTypeEnumsListViewModel, optionsText: function(item){return item.Name}, optionsValue: function(item){return item.Value}, selectValue: $data.JsonMapEnum"></select>
+            </li>
+            <li><input type="text" data-bind="value: $data.JSClass" /></li>
+            <li>
+                <span class="label">Generic Only:</span>
+                <span class="checkbox"><input type="checkbox" data-bind="checked: $data.GenericOnly" /></span>
+            </li>
+            <!-- ko if: $root.FormViewModel.SubTypeListViewModel.SubTypeList[$data.Name()]().length > 0 -->
+            <li><select data-bind="options: $root.FormViewModel.SubTypeListViewModel.SubTypeList[$data.Name()](), optionsText: function(item){return _.last(_.first(item.Name().split('_')).split('.'))}, optionsValue: function(item){return item.Name()}, selectValue: $data.AbstractDefault" /></li>
+            <!-- /ko -->
+        </ul>
+        <div class="button-row">
+            <div class="columns large-6">
+                <div class="button medium success radius" data-bind="click: function(){ $root.JsonMapsViewModel.saveModified($data) },visible: $root.JsonMapsViewModel.showUpdate($data)">Update</div>
+            </div>
+            <div class="columns large-6">
+                <div class="button medium alert radius" data-bind="click: function(){ $data.restoreBackup() }, visible: $root.JsonMapsViewModel.showUpdate($data)">Undo</div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</script>
+<script type="text/html" id="AttributeJsonMapGridItem">
+    <div class="JsonMapGridItem alert-box primary callout" data-bind="css:{'secondary': $data.parentSelected, 'alert': $data.childSelected,'success': $data.selected, 'new': $data === $root.JsonMapsViewModel.nodeCreated()}, visible: $root.JsonMapsViewModel.AttributesDisplayList().indexOf($data)>-1">
+        <div class="button-row">
+            <div class="large-4 columns">
+                <div class="button tiny radius" data-bind="click: function(){$data.toggleSelected()}, visible: $root.JsonMapsViewModel.showSelect($data) ">select</div>
+            </div>
+            <div class="large-4 columns">
+                <div class="button tiny radius" data-bind="click: function(){ $root.JsonMapsViewModel.saveCreated($data) }, visible: $root.JsonMapsViewModel.nodeCreated() == $data">save</div>
+                <div class="button tiny radius success" data-bind="click: function(){ $root.JsonMapsViewModel.addToSelected($data) }, visible: $root.JsonMapsViewModel.showAdd($data, 'Entitys')">add</div>
+                <div class="button tiny radius alert" data-bind="click: function(){ $root.JsonMapsViewModel.unaddFromSelected($data)}, visible: $root.JsonMapsViewModel.showUnadd($data, 'Entitys') ">unadd</div>
+            </div>
+
+            <div class="large-4 columns">
+                <div class="button tiny radius" data-bind="click: function(){ $root.JsonMapsViewModel.removeViewModel($data,'Attributes') }, visible: $root.JsonMapsViewModel.nodeCreated() == $data">remove</div>
+                <div class="button tiny radius" data-bind="click: function(){ $root.JsonMapsViewModel.nodeDeleted($data)}, visible: $root.JsonMapsViewModel.nodeCreated() != $data">delete</div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <ul>
+            <li><span data-bind="text: $data.Id"></span></li>
+            <li><select data-bind="options: $data.TypeAttributeList, optionsText: function(item){return item}, optionsValue: function(item){return item}, selectValue: $data.Name" /></li>
+            <li>
+                <select class="JSTypeEnum" data-bind="options: $root.FormViewModel.JSTypeEnumsListViewModel, optionsText: function(item){return item.Name}, optionsValue: function(item){return item.Value}, selectValue: $data.JSType"></select>
+            </li>
+            <li>
+                <select class="JsonMapTypeEnum" data-bind="options: $root.FormViewModel.JsonMapTypeEnumsListViewModel, optionsText: function(item){return item.Name}, optionsValue: function(item){return item.Value}, selectValue: $data.SubJsonMapEnum"></select>
+            </li>
+        </ul>
+        <div class="button-row">
+            <div class="columns large-6">
+                <div class="button medium success radius" data-bind="click: function(){ $root.JsonMapsViewModel.saveModified($data) },visible: $root.JsonMapsViewModel.showUpdate($data)">Update</div>
+            </div>
+            <div class="columns large-6">
+                <div class="button medium alert radius" data-bind="click: function(){ $data.restoreBackup() }, visible: $root.JsonMapsViewModel.showUpdate($data)">Undo</div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</script>
+<script type="text/html" id="ValidationJsonMapGridItem">
+    <div class="JsonMapGridItem alert-box primary callout" data-bind="css:{'secondary': $data.parentSelected, 'alert': $data.childSelected,'success': $data.selected, 'new': $data === $root.JsonMapsViewModel.nodeCreated()}, visible: $root.JsonMapsViewModel.ValidationsDisplayList().indexOf($data)>-1">
+        <div class="button-row">
+            <div class="large-4 columns">
+                <div class="button tiny radius" data-bind="click: function(){$data.toggleSelected()}, visible: $root.JsonMapsViewModel.showSelect($data) ">select</div>
+            </div>
+            <div class="large-4 columns">
+                <div class="button tiny radius" data-bind="click: function(){ $root.JsonMapsViewModel.saveCreated($data) }, visible: $root.JsonMapsViewModel.nodeCreated() == $data">save</div>
+                <div class="button tiny radius success" data-bind="click: function(){ $root.JsonMapsViewModel.addToSelected($data) }, visible: $root.JsonMapsViewModel.showAdd($data, 'Attributes')">add</div>
+                <div class="button tiny radius alert" data-bind="click: function(){ $root.JsonMapsViewModel.unaddFromSelected($data)}, visible: $root.JsonMapsViewModel.showUnadd($data, 'Attributes') ">unadd</div>
+            </div>
+
+            <div class="large-4 columns">
+                <div class="button tiny radius" data-bind="click: function(){ $root.JsonMapsViewModel.removeViewModel($data,'Validations') }, visible: $root.JsonMapsViewModel.nodeCreated() == $data">remove</div>
+                <div class="button tiny radius" data-bind="click: function(){ $root.JsonMapsViewModel.nodeDeleted($data)}, visible: $root.JsonMapsViewModel.nodeCreated() != $data">delete</div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <ul>
+            <li><span data-bind="text: $data.Id"></span></li>
+            <li><select data-bind="options: $root.FormViewModel.ValidationMethodListViewModel.ValidMethodList(), optionsText: function(item){return _.last(item.split('.'))}, optionsValue: function(item){return item}, selectValue: $data.Name" /></li>
+            <li>Step: <input type="text" maxlength="2" data-bind="value: $data.Step" ></input></li>
+        </ul>
+        <div class="button-row">
+            <div class="columns large-6">
+                <div class="button medium success radius" data-bind="click: function(){ $root.JsonMapsViewModel.saveModified($data) },visible: $root.JsonMapsViewModel.showUpdate($data)">Update</div>
+            </div>
+            <div class="columns large-6">
+                <div class="button medium alert radius" data-bind="click: function(){ $data.restoreBackup() }, visible: $root.JsonMapsViewModel.showUpdate($data)">Undo</div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</script>
+<script type="text/html" id="ArgumentJsonMapGridItem">
+    <div class="JsonMapGridItem alert-box primary callout" data-bind="css:{'secondary': $data.parentSelected, 'alert': $data.childSelected,'success': $data.selected, 'new': $data === $root.JsonMapsViewModel.nodeCreated()}, visible: $root.JsonMapsViewModel.ArgumentsDisplayList().indexOf($data)>-1">
+        <div class="button-row">
+            <div class="large-4 columns">
+            </div>
+            <div class="large-4 columns">
+                <div class="button tiny radius" data-bind="click: function(){ $root.JsonMapsViewModel.saveCreated($data) }, visible: $root.JsonMapsViewModel.nodeCreated() == $data">save</div>
+                <div class="button tiny radius success" data-bind="click: function(){ $root.JsonMapsViewModel.addToSelected($data) }, visible: $root.JsonMapsViewModel.showAdd($data, 'Validations')">add</div>
+                <div class="button tiny radius alert" data-bind="click: function(){ $root.JsonMapsViewModel.unaddFromSelected($data)}, visible: $root.JsonMapsViewModel.showUnadd($data, 'Validations') ">unadd</div>
+            </div>
+
+            <div class="large-4 columns">
+                <div class="button tiny radius" data-bind="click: function(){ $root.JsonMapsViewModel.removeViewModel($data,'Arguments') }, visible: $root.JsonMapsViewModel.nodeCreated() == $data">remove</div>
+                <div class="button tiny radius" data-bind="click: function(){ $root.JsonMapsViewModel.nodeDeleted($data)}, visible: $root.JsonMapsViewModel.nodeCreated() != $data">delete</div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <ul>
+            <li><span data-bind="text: $data.Id"></span></li>
+            <li><select data-bind="options: $data.ValidArgumentList, optionsText: function(item){return item}, optionsValue: function(item){return item}, selectValue: $data.Name" /></li>
+            <li><input type="text" data-bind="value: $data.Path" /></li>
+        </ul>
+        <div class="button-row">
+            <div class="columns large-6">
+                <div class="button medium success radius" data-bind="click: function(){ $root.JsonMapsViewModel.saveModified($data) },visible: $root.JsonMapsViewModel.showUpdate($data)">Update</div>
+            </div>
+            <div class="columns large-6">
+                <div class="button medium alert radius" data-bind="click: function(){ $data.restoreBackup() }, visible: $root.JsonMapsViewModel.showUpdate($data)">Undo</div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</script>
