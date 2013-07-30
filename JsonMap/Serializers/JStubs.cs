@@ -227,7 +227,7 @@ namespace JsonMap
             subClasses.Add(new JProperty("_base", tmpclass.Value));
             subClasses.Add(new JProperty("_default", defaultType));
 
-            var subclasses = AppDomain.CurrentDomain.GetAssemblies().SelectMany(x => x.GetTypes()).Distinct().Where(y => y.Impliments(baseType) && !y.IsGenericType).ToArray();
+            var subclasses = AppDomain.CurrentDomain.GetAssemblies().Where(x => JTransformer.Queryer.MappingAssembies.Contains(x.GetName().Name)).SelectMany(x => x.GetTypes()).Distinct().Where(y => y.Impliments(baseType) && !y.IsGenericType).ToArray();
             foreach (var subClass in subclasses)
             {
                 subClasses[subClass.FullName + "_" + subClass.Assembly.GetName().Name] = tmpclass.Value.DeepClone();
