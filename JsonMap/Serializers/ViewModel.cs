@@ -50,6 +50,10 @@ namespace JsonMap
             }
             return appVM;
         }
+        public static String CreateAppViewModelString(IEnumerable<BaseViewModel> VMs)
+        {
+            return CreateAppViewModel(VMs).ToString(Newtonsoft.Json.JsonConvert.DefaultSettings.Invoke().Formatting, null);
+        }
     }
 
     public class ViewModel : BaseViewModel

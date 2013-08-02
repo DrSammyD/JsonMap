@@ -52,7 +52,7 @@ namespace JsonMap.Web.Test.Controllers
                     }
                 }
             };
-            ViewBag.JSON = BaseViewModel.CreateAppViewModel(vmList).ToString();
+            ViewBag.JSON = BaseViewModel.CreateAppViewModelString(vmList);
             return View();
         }
 
