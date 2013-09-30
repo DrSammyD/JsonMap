@@ -2,20 +2,18 @@
  * Licensed under MPL-2.0 (see /LICENSE)
  * If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
- * 
+ *
  * Author: Sam Armstrong
  */
 
-
-
+using JsonMap.Interfaces;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using JsonMap.Interfaces;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
 namespace JsonMap
 {
@@ -27,7 +25,7 @@ namespace JsonMap
         {
         }
 
-        private static JsonSerializerSettings settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto };
+        private static JsonSerializerSettings settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto, NullValueHandling = NullValueHandling.Ignore };
 
         /// <summary>
         /// Returns an object created from the jObject and placed in a stub object
