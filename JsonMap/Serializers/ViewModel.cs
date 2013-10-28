@@ -2,15 +2,15 @@
  * Licensed under MPL-2.0 (see /LICENSE)
  * If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
- * 
+ *
  * Author: Sam Armstrong
  */
 
+using JsonMap.Default;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using JsonMap.Default;
-using Newtonsoft.Json.Linq;
 
 namespace JsonMap
 {
@@ -50,6 +50,7 @@ namespace JsonMap
             }
             return appVM;
         }
+
         public static String CreateAppViewModelString(IEnumerable<BaseViewModel> VMs)
         {
             return CreateAppViewModel(VMs).ToString(Newtonsoft.Json.JsonConvert.DefaultSettings.Invoke().Formatting, null);
@@ -63,7 +64,7 @@ namespace JsonMap
 
         public ViewModel()
         {
-            CustomVM = "ViewModel";
+            CustomVM = "";
             obj = null;
             jOpts = new ToJOptions();
         }
@@ -72,6 +73,7 @@ namespace JsonMap
         {
             JToken jVM = JTransformer.ToJToken(this.obj, this.jOpts);
             if (this.CustomVM == "") { this.CustomVM = this.jOpts.classJProperty.Value.ToString(); }
+            if (this.CustomVM == "") { this.CustomVM = "ViewModel"; }
             if (this.CustomPropName == "") { this.CustomPropName = this.jOpts.classJProperty.Name; }
             (appVM as JObject).Add(new JProperty(this.CustomPropName, jVM));
             (appVM["_stubs"] as JObject).Add(new JProperty(this.CustomPropName, this.jOpts.stubJToken));
@@ -106,7 +108,7 @@ namespace JsonMap
         public CollectionViewModel()
         {
             jOpts = new ToJOptions();
-            CustomTopVMs = "ViewModel";
+            CustomTopVMs = "";
             CustomPropName = "VMCollection";
             CustomTopProperty = "";
         }
@@ -118,6 +120,7 @@ namespace JsonMap
             if (this.jOpts.topLevelObject == typeof(IList)) jsType = DefaultJSTypeEnum.ObservableArray;
             this.jOpts.topLevelObject = typeof(Object);
             if (this.CustomVM == "") { this.CustomVM = this.jOpts.classJProperty.Value.ToString(); }
+            if (this.CustomVM == "") { this.CustomVM = "ViewModel"; }
             if (this.CustomPropName == "") { this.CustomPropName = this.jOpts.classJProperty.Name; }
             jVM = new JObject { new JProperty(this.CustomPropName, jVM) };
             this.jOpts.stubJToken = new JObject{
