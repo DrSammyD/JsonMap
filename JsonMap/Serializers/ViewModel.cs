@@ -72,7 +72,7 @@ namespace JsonMap
         public override void AddVM(JObject appVM)
         {
             JToken jVM = JTransformer.ToJToken(this.obj, this.jOpts);
-            if (this.CustomVM == "") { this.CustomVM = this.jOpts.classJProperty.Value.ToString(); }
+            if (this.CustomVM == "") { this.CustomVM = this.jOpts.classJProperty.Value["_base"].Value<String>().ToString(); }
             if (this.CustomVM == "") { this.CustomVM = "ViewModel"; }
             if (this.CustomPropName == "") { this.CustomPropName = this.jOpts.classJProperty.Name; }
             (appVM as JObject).Add(new JProperty(this.CustomPropName, jVM));
@@ -119,7 +119,7 @@ namespace JsonMap
             var jsType = DefaultJSTypeEnum.Dictionary;
             if (this.jOpts.topLevelObject == typeof(IList)) jsType = DefaultJSTypeEnum.ObservableArray;
             this.jOpts.topLevelObject = typeof(Object);
-            if (this.CustomVM == "") { this.CustomVM = this.jOpts.classJProperty.Value.ToString(); }
+            if (this.CustomVM == "") { this.CustomVM = this.jOpts.classJProperty.Value["_base"].Value<String>().ToString(); }
             if (this.CustomVM == "") { this.CustomVM = "ViewModel"; }
             if (this.CustomPropName == "") { this.CustomPropName = this.jOpts.classJProperty.Name; }
             jVM = new JObject { new JProperty(this.CustomPropName, jVM) };
