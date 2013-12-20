@@ -84,6 +84,13 @@ button:hover, .button:hover {
   padding: 5px;
 }
 
+.JsonMapGridItem {
+border-bottom-color: darkgreen;
+border-bottom-width: thin;
+border-bottom-style: solid;
+padding-top: 0px;
+}
+
 /* line 64, ../Aidem/sass/layout/_jsonMap.scss */
 .json-map-save {
   position: fixed;
