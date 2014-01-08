@@ -37,7 +37,7 @@ namespace JsonMap.Web.Controllers
                     CustomPropName = "JsonMapsViewModel",
                     CustomVM= "JsonMapsViewModel",
                     jOpts = new ToJOptions {
-                        mapType = DefaultJsonMapEnum.FormHelper
+                        mapType = DefaultJsonMapEnum.Read
                     }
                 },
                 new SubViewModel {

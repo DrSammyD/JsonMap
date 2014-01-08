@@ -1,7 +1,7 @@
 {
   "version": 3,
   "file": "ko.asynchArray.js",
-  "sourceRoot": "..\\..\\..\\_build",
+  "sourceRoot": "..\\..\\..\\bin",
   "sources": [
     "..\\Scripts\\Coffee\\Utils\\ko.asynchArray.coffee"
   ],

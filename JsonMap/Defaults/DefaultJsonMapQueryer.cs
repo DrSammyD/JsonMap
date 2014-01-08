@@ -20,11 +20,10 @@ namespace JsonMap.Default
 {
     public enum DefaultJsonMapEnum
     {
-        Default = 0,
-        FormHelper = 1,
-        Signup = 2,
-        View = 3,
-        Edit = 4,
+        Create = 0,
+        Read = 1,
+        Update = 2,
+        Delete = 3,
         Inherited = -1
     }
 

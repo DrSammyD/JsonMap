@@ -154,6 +154,25 @@
     <Content Include="Scripts\Coffee\ViewModelPrototypes\JsonMapViewModel.js" />
     <Content Include="Scripts\Coffee\ViewModelPrototypes\ViewModel.coffee" />
     <Content Include="Scripts\Coffee\ViewModelPrototypes\ViewModel.js" />
+    <Content Include="_build\cake.js" />
+    <Content Include="_build\coffee-script\browser.js" />
+    <Content Include="_build\coffee-script\cake.js" />
+    <Content Include="_build\coffee-script\coffee-script.js" />
+    <Content Include="_build\coffee-script\command.js" />
+    <Content Include="_build\coffee-script\grammar.js" />
+    <Content Include="_build\coffee-script\helpers.js" />
+    <Content Include="_build\coffee-script\index.js" />
+    <Content Include="_build\coffee-script\lexer.js" />
+    <Content Include="_build\coffee-script\nodes.js" />
+    <Content Include="_build\coffee-script\optparse.js" />
+    <Content Include="_build\coffee-script\parser.js" />
+    <Content Include="_build\coffee-script\repl.js" />
+    <Content Include="_build\coffee-script\rewriter.js" />
+    <Content Include="_build\coffee-script\scope.js" />
+    <Content Include="_build\coffee-script\sourcemap.js" />
+    <Content Include="_build\node.exe" />
+    <Content Include="_build\run.js" />
+    <Content Include="Scripts\Coffee\ViewModelPrototypes\ViewModel.map" />
     <None Include="Scripts\jquery-2.0.3.intellisense.js" />
     <Content Include="Scripts\jquery-2.0.3.js" />
     <Content Include="Scripts\jquery-2.0.3.min.js" />
@@ -170,6 +189,7 @@
     </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Scripts\jquery-2.0.3.min.map" />
+    <Content Include="_build\start.bat" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -208,7 +228,6 @@
     <Content Include="Scripts\Coffee\KOBindings\ko.selectvalue.map" />
     <Content Include="Scripts\Coffee\Utils\ko.asynchArray.map" />
     <Content Include="Scripts\Coffee\ViewModelPrototypes\JsonMapViewModel.map" />
-    <Content Include="Scripts\Coffee\ViewModelPrototypes\ViewModel.map" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -239,6 +258,10 @@
     </VisualStudio>
   </ProjectExtensions>
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <PropertyGroup>
+    <PreBuildEvent>cd $(ProjectPath)_build
+../_build/start.bat</PreBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

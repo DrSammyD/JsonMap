@@ -1,7 +1,7 @@
 {
   "version": 3,
   "file": "ko.selectvalue.js",
-  "sourceRoot": "..\\..\\..\\_build",
+  "sourceRoot": "..\\..\\..\\bin",
   "sources": [
     "..\\Scripts\\Coffee\\KOBindings\\ko.selectvalue.coffee"
   ],

@@ -1,7 +1,7 @@
 {
   "version": 3,
   "file": "EditJsonMapAppViewModel.js",
-  "sourceRoot": "..\\..\\..\\_build",
+  "sourceRoot": "..\\..\\..\\bin",
   "sources": [
     "..\\Scripts\\Coffee\\AppViewModelPrototypes\\EditJsonMapAppViewModel.coffee"
   ],
