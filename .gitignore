@@ -1,0 +1,15 @@
+/JsonMap.Web/bin
+/packages
+/.nuget
+/JsonMap.Web/obj/Debug/*.cache
+/JsonMap.Web/obj/Debug/*.cache
+/JsonMap.Web/obj/Debug/*.cache
+/JsonMap.Web/obj/Release/*.cache
+/JsonMap/obj/Debug/*.cache
+/JsonMap/obj/Debug/*.Cache
+/JsonMap/obj/Debug/*.cache
+/JsonMap/obj/Release/*.cache
+/JsonMap/obj/Release/*.Cache
+/JsonMap/obj/Release/*.cache
+bin
+obj

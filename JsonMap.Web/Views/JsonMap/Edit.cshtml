@@ -1,0 +1,86 @@
+﻿<!--
+ ###* 
+ * Copyright 2013 MacReport Media Publishing Inc.
+ * Licensed under MPL-2.0 (see /LICENSE)
+ * If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ * 
+ * Author: Sam Armstrong
+ ###
+ -->
+
+@{
+    ViewBag.Title = "Edit Json Maps";
+    ViewBag.Scripts = ViewBag.Scripts = new String[1] { "~/bundles/jsonmapviewModel" };
+}
+@Html.Partial("KOTemplates/_JsonMapGridItem")
+<script type="text/javascript">
+    $(document).ready(function () {
+        initial = @Html.Raw(@ViewBag.JSON);
+        ViewModel = new ko.ModelFactory.EditJsonMapAppViewModel(initial);
+
+        ko.applyBindings(ViewModel);
+    })
+</script>
+<div class="container">
+    <div class="add-row">
+        <div class="column">
+            <div class="inner">
+                <div class="button-row">
+                    <a class="button" data-bind="click: function(){JsonMapsViewModel.createNewViewModel('Entitys') }, enableClick: JsonMapsViewModel.nodeCreated() === null && JsonMapsViewModel.nodeSelectedList() === null">
+                        add Entitys</a>
+                </div>
+                <div class="scroll" data-bind="template:{name: 'EntityJsonMapGridItem', foreach: JsonMapsViewModel.EntitysTotal }">
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="inner">
+                <div class="button-row">
+                    <a class="button" data-bind="click: function(){JsonMapsViewModel.createNewViewModel('Attributes') }, enableClick: JsonMapsViewModel.nodeCreated() === null && JsonMapsViewModel.nodeSelectedList() === 'Entitys'">
+                        add Attributes</a>
+                </div>
+                <div class="scroll" data-bind="template:{name: 'AttributeJsonMapGridItem', foreach: JsonMapsViewModel.AttributesTotal }">
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="inner">
+                <div class="button-row">
+                    <a class="button" data-bind="click: function(){JsonMapsViewModel.createNewViewModel('Validations') }, enableClick: JsonMapsViewModel.nodeCreated() === null && JsonMapsViewModel.nodeSelectedList() === 'Attributes'">
+                        add Validations</a>
+                </div>
+                <div class="scroll" data-bind="template:{name: 'ValidationJsonMapGridItem', foreach: JsonMapsViewModel.ValidationsTotal }">
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="inner">
+                <div class="button-row">
+                    <a class="button" data-bind="click: function(){JsonMapsViewModel.createNewViewModel('Arguments') }, enableClick: JsonMapsViewModel.nodeCreated() === null && JsonMapsViewModel.nodeSelectedList() === 'Validations'">
+                        add Arguments</a>
+                </div>
+                <div class="scroll" data-bind="template:{name: 'ArgumentJsonMapGridItem', foreach: JsonMapsViewModel.ArgumentsTotal }">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clear">
+    </div>
+</div>
+<div class="json-map-save">
+    <button data-bind="click: function(){ JsonMapsViewModel.saveMaps() }">
+        Save Json Maps</button>
+</div>
+<div id="deleteModal" class="reveal-modal" data-bind="jmReveal: JsonMapsViewModel.nodeDeleted() != null">
+    <div class="row">
+        <h2>
+            Are you sure you want to delete the <span data-bind="text: JsonMapsViewModel.nodeDeletedType">
+            </span>with the Id: <span data-bind="text: (JsonMapsViewModel.nodeDeleted() != null)? JsonMapsViewModel.nodeDeleted().Id() : 0 ">
+            </span>
+        </h2>
+    </div>
+    <a class="button" data-bind="click: function(){ JsonMapsViewModel.deleteJsonMap() }">
+        Delete</a> <a class="button" data-bind="click: function(){ JsonMapsViewModel.nodeDeleted(null) }">
+            Cancel</a>
+</div>

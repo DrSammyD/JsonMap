@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "ko.selectvalue.js",
+  "sourceRoot": "..\\..\\..\\_build",
+  "sources": [
+    "..\\Scripts\\Coffee\\KOBindings\\ko.selectvalue.coffee"
+  ],
+  "names": [],
+  "mappings": ";AAAA;CAAA,CAAA,CACE,QADF,IAAkB;CAChB,CAAM,CAAA,CAAN,GAAM,EAAC,IAAD;CACD,CAAD,EAAF,CAAwB,EAAxB,MAAA,EAAkB;CADpB,IAAM;CAAN,CAGQ,CAAA,CAAR,EAAA,CAAQ,EAAC,IAAD;CACN,CAAE,GAAsB,CAAxB,CAAA,MAAA,EAAkB;CAClB,KAAA,CAAA,MAAA;CALF,IAGQ;CAJV,GAAA;CAAA"
+}

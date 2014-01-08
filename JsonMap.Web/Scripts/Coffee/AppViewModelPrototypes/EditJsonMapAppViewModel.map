@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "EditJsonMapAppViewModel.js",
+  "sourceRoot": "..\\..\\..\\_build",
+  "sources": [
+    "..\\Scripts\\Coffee\\AppViewModelPrototypes\\EditJsonMapAppViewModel.coffee"
+  ],
+  "names": [],
+  "mappings": ";AAAA;CAAA,KAAA,iBAAA;KAAA;oSAAA;;CAAA,CAAM;CACJ;;CAAa,EAAA,CAAA,GAAA,0BAAC;CACZ,SAAA,OAAA;CAAA,EAAoB,GAApB,CAA4B,UAA5B,EAA4B;AAC5B,CADA,KACA,CAAc,UADd;CAAA,KAEA,CAAA,kDAAM;CAFN,CAG2B,CAAF,CAAxB,EAAD,MAAwC,CAAkF,IAA1H,EAAmE,UAAsJ,CAAhM;CAJ3B,IAAa;;CAAb;;CADoC,CAAE,UAAa;;CAArD,CAOA,CAA0C,SAA3B,WAAf;CAPA"
+}

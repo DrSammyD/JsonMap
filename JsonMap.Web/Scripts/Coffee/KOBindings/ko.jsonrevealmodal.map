@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "ko.jsonrevealmodal.js",
+  "sourceRoot": "..\\..\\..\\_build",
+  "sources": [
+    "..\\Scripts\\Coffee\\KOBindings\\ko.jsonrevealmodal.coffee"
+  ],
+  "names": [],
+  "mappings": ";AAAA;CAAA,CAAA,CACE,KADF,OAAkB;CAChB,CAAQ,CAAA,CAAR,EAAA,CAAQ,EAAC,IAAD;CACN,IAAA,KAAA;CAAA,CAAU,CAAF,EAAR,CAAA,OAAkC,GAA1B;CACR,GAAG,CAAH,CAAA;CACE,EAAA,IAAA,EAAA,MAAA;MADF,EAAA;CAGE,EAAA,IAAA,QAAA;QALI;CAAR,IAAQ;CADV,GAAA;CAAA"
+}
